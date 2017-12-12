@@ -29,3 +29,24 @@ RUN cd /opt/src && \
     ./autogen.sh --prefix=/usr --libdir=/usr/lib/x86_64-linux-gnu && \
     make -j2 && \
     make install
+
+RUN cd /opt/src && \
+    curl -sSLO https://www.samba.org/ftp/ccache/ccache-3.2.8.tar.bz2 && \
+    tar xf ccache-3.2.8.tar.bz2 && \
+    cd ccache-3.2.8 && \
+    ./configure --prefix=/usr && \
+    make && \
+    make install
+
+RUN mkdir -p /usr/lib/ccache && \
+    cd /usr/lib/ccache && \
+    ln -sf /usr/bin/ccache gcc && \
+    ln -sf /usr/bin/ccache g++ && \
+    ln -sf /usr/bin/ccache cc && \
+    ln -sf /usr/bin/ccache c++ && \
+    ln -sf /usr/bin/ccache clang && \
+    ln -sf /usr/bin/ccache clang++ && \
+    ln -sf /usr/bin/ccache clang-4.0 && \
+    ln -sf /usr/bin/ccache clang++-4.0
+
+ENV PATH /usr/lib/ccache:$PATH
