@@ -5,14 +5,16 @@ RUN apt-get update && \
     apt-get install -y \
     autoconf \
     curl \
-    libtool \
     libdrm-dev \
+    libgl1-mesa-glx \
+    libgl1-mesa-dev \
+    libtool \
+    libx11-dev \
+    openbox \
+    unzip \
     xorg \
     xorg-dev \
-    openbox \
-    libx11-dev \
-    libgl1-mesa-glx \
-    libgl1-mesa-dev && apt-get clean all
+    && apt-get clean all
 
 RUN mkdir /opt/src && \
     cd /opt/src && \
