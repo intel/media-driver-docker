@@ -23,7 +23,7 @@ RUN mkdir /opt/src && \
     rm cmake-3.8.2-Linux-x86_64.sh
 
 RUN cd /opt/src && \
-    curl -o libva-master.zip -sSL https://github.com/01org/libva/archive/master.zip && \
+    curl -o libva-master.zip -sSL https://github.com/intel/libva/archive/master.zip && \
     unzip libva-master.zip && \
     cd libva-master && \
     ./autogen.sh --prefix=/usr --libdir=/usr/lib/x86_64-linux-gnu && \
